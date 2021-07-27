@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo list</title>
+    <link rel="stylesheet" href="style.css" >
+    <!-- <script src="script.js" ></script> -->
+    <style>
+        ul{
+            background-color: white;
+        }
+        ul li{
+            cursor: pointer;
+            
+
+        }
+        ul li:hover{
+            background-color: rgb(128, 43, 226);
+        }
+        
+    </style>
+    
+</head>
+<body  class="bg-gradient-to-r from-purple-500">
+    <div class=" relative   font-serif ">
+        <div class=" bg-gradient-to-r from-purple-500  flex flex-col relative flex-1 ">
+            <div class="flex justify-center" >
+                <h1 class=" text-4xl pt-16 font-bold ">TODOS APP</h1>
+            </div>
+            <div class="">
+                <p class=" text-center pt-16 text-2xl">This Demo showcases a simple workflow with VueJs,AXios</p>
+            </div>
+            <div class="flex justify-center my-10">
+                <input id="myInput" class="border-red-400  border rounded-sm text-xl " placeholder=" New Todo" type="text" >
+                <button type="submit" class=" bg-black text-white w-20 h-10 hover:bg-white hover:text-black  " onclick="addtodo()">+</button>
+            </div>
+            <div>
+                <ul id="todoList" class=" flex flex-col justify-center text-center text-2xl font-semibold ">
+                    <!-- <li> GYM </li>
+                    <li>study</li>
+                    <li>Assignments</li>
+                    <li>Learning JS</li>  -->
+                </ul>
+            </div>
+            <h1 class="counter text-center text-2xl font-bold mt-14 ">1000</h1>
+            <p class="follower text-center shadow-lg text-3xl text-white font-semibold ">Followers</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+   
+    var counter = document.querySelector(".counter");
+    var follower = document.querySelector(".follower");
+    let count=1;
+    setInterval(() => {
+        if(count<1000){
+            count++;
+            counter.innerHTML=count;
+        }
+    },10);
+
+    setTimeout(() => {
+            follower.innerHTML ="Followers on Instagram!!!";
+    },10000);
+    // const listoftodo= document.getElementById("myInput");
+    // document.getElementById("myInput").innerHTML = listoftodo.innerHTML;
+
+    //adding new list itmes
+        function addtodo(){
+
+            let listName = document.getElementById('myInput');
+            let listNameValue = listName.value;
+            console.log(listNameValue);
+            /* let List=document.getElementById('todoList'); */
+            ul = document.getElementById('todoList')
+            let textNode = document.createTextNode(listNameValue);
+            console.log(textNode);
+
+            if(listNameValue==''){
+               alert("Write something in to-do list");
+               span.style.display='';
+            }
+           
+            //Create label
+            let label = document.createElement('label');
+
+            //create list
+            let li= document.createElement('li');
+            console.log(li);
+            console.log(label);
+
+           /*  ul.appendChild(label); */
+            li.appendChild(label);
+            label.appendChild(textNode);
+            ul.insertBefore(li,ul.childNodes[0]);
+            // delete button
+            var myNodelist = document.getElementsByTagName("LI");
+            var i;
+            // txt.style.backgroundColor="red";
+            var txt = document.createTextNode('delete');
+            // txt.style.backgroundColor ="red";
+            for (i = 0; i < myNodelist.length; i++) {
+            var span = document.createElement("SPAN");
+            span.className = "close";
+            span.appendChild(txt);
+            myNodelist[i].appendChild(span);
+            span.style.color="red";
+            span.style.backgroundColor="black";
+            
+            // span.style.marginright="500px";
+            span.style.padding="3px"
+            
+            // if(listNameValue=='none'){
+            //     span.style.display='';
+            //  }
+            var close = document.getElementsByClassName("close");
+              var i;
+            for (i = 0; i < close.length; i++) {
+             close[i].onclick = function() {
+              var div = this.parentElement;
+            div.style.display = "none";
+                    }
+                 }
+          }
+
+        }
+
+        // var txt = document.createTextNode("\u00D7");
+        // console.log(txt)
+      
+</script>
